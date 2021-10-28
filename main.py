@@ -9,7 +9,6 @@ class MainSpider(scrapy.Spider):
         url = 'https://efts.sec.gov/LATEST/search-index'
 
         for x in range(1,11):
-            print('='*100)
             form1 = {
                 "category":"form-cat2",
                 "filter_forms":"4",
@@ -29,7 +28,6 @@ class MainSpider(scrapy.Spider):
         resp = json.loads(response.body)
         hits = resp.get('hits').get('hits')
         for hit in hits:
-            print('**---'*100)
             one = hit.get('_source').get('ciks')[1]
             two = hit.get('_source').get('adsh').replace('-','')
             three = hit.get('_source').get('xsl')
